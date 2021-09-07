@@ -61,7 +61,7 @@ contract MarketplaceV2 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceUSD() public view returns (uint) {
     (
-      int256 answer,
+      ,int256 answer,,,
     ) = priceFeedUSD.latestRoundData();
     int weiUsd = 10**26/answer;
     return uint(weiUsd);
@@ -72,7 +72,7 @@ contract MarketplaceV2 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceDAI() public view returns (uint) {
     (
-      int256 answer,
+      ,int256 answer,,,
     ) = priceFeedDAI.latestRoundData();
     int weiUsd = 10**26/answer;
     return uint(weiUsd);
@@ -83,7 +83,7 @@ contract MarketplaceV2 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceLINK() public view returns (uint) {
     (
-      int256 answer,
+      ,int256 answer,,,
     ) = priceFeedLINK.latestRoundData();
     // return answer;
     int weiUsd = 10**26/answer;
@@ -106,7 +106,7 @@ contract MarketplaceV2 is Initializable, OwnableUpgradeable{
     @param tokenId token id
     @param amount tokens to sell
     @param deadline order time available
-    @param price 
+    @param price price
   */
   function sell1155(address token, uint256 tokenId, uint256 amount, uint256 deadline, uint256 price) public {
     require(IERC1155(token).balanceOf(msg.sender, tokenId) >= amount, "Not enough items owned");
@@ -132,7 +132,7 @@ contract MarketplaceV2 is Initializable, OwnableUpgradeable{
     @param token token contract address
     @param tokenId token id
     @param deadline order time available
-    @param price
+    @param price price
   */
   function sell721(address token, uint256 tokenId, uint256 deadline, uint256 price) public {
     require(IERC721(token).ownerOf(tokenId) == msg.sender, "its not your item");

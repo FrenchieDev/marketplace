@@ -58,7 +58,7 @@ contract MarketplaceV1 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceUSD() public view returns (uint) {
     (
-     int256 answer,
+     ,int256 answer,,,
     ) = priceFeedUSD.latestRoundData();
 
     int weiUsd = 10**26/answer;
@@ -70,7 +70,7 @@ contract MarketplaceV1 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceDAI() public view returns (uint) {
     (
-      int256 answer,
+      ,int256 answer,,,
     ) = priceFeedDAI.latestRoundData();
    
     int weiUsd = 10**26/answer;
@@ -82,7 +82,7 @@ contract MarketplaceV1 is Initializable, OwnableUpgradeable{
   */
   function getLatestPriceLINK() public view returns (uint) {
     (
-      int256 answer,
+      ,int256 answer,,,
     ) = priceFeedLINK.latestRoundData();
     int weiUsd = 10**26/answer;
     return uint(weiUsd);
